@@ -25,6 +25,9 @@ public class PlayPointGameView extends PlayGameView {
         System.out.println();
     }
     
+    /*
+    Tell the PointGame to update the point and show the total points of each player
+    */
     @Override
     public void endTurn() {
         ((PointGame) this.game).passTurn();

@@ -66,6 +66,9 @@ public class Hand {
         this.cardsInHand.remove(c);
     }
     
+    /*
+    Return a playable card given an index
+    */
     public Card getCardFromIndex(int index) {
         return this.playableCards.get(index);
     }
@@ -85,13 +88,13 @@ public class Hand {
     Update the playableCards
     */
     public void updatePlayableCards() {
-        ArrayList<Card> playableCards = new ArrayList<>();
+        ArrayList<Card> updatedPlayableCards = new ArrayList<>();
         for(Card c : this.cardsInHand) {
             if(this.isPlayable(c)) {
-                playableCards.add(c);
+                updatedPlayableCards.add(c);
             }
         }
-        this.playableCards = playableCards;
+        this.playableCards = updatedPlayableCards;
     }
     
     

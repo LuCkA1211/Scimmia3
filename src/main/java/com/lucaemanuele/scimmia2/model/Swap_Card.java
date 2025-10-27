@@ -15,6 +15,9 @@ public class Swap_Card extends Card {
         this.value = 10;
     }
     
+    /*
+    Return the type of card
+    */
     @Override
     public String toString() {
         return "Swap";
@@ -31,6 +34,9 @@ public class Swap_Card extends Card {
         nextPlayer.setCardsInHand(currentPlayerCards);
     }
     
+    /*
+    Return the description of the effect
+    */
     public String descriptionEffect() {
         return "Scambia le carte con il prossimo giocatore";
     }

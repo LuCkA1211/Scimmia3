@@ -62,6 +62,9 @@ public abstract class Player {
     
     public abstract void playCardFromIndex(int indexCard, Table table);
     
+    /*
+    Set that the player is taking the turn (not played yet)
+    */
     public void startTurn() {
         this.hasPlayed = false;
         this.hasTakenTurn = true;
@@ -78,10 +81,16 @@ public abstract class Player {
         return playableCards;
     }
     
+    /*
+    Return the cards from its hand
+    */
     public ArrayList<Card> getCardsInHand() {
         return this.hand.getCardsInHand();
     }
     
+    /*
+    Set the cards of its hand
+    */
     public void setCardsInHand(ArrayList<Card> cards) {
         this.hand.setCardsInHand(cards);
     }
@@ -123,6 +132,9 @@ public abstract class Player {
         }
     }
     
+    /*
+    Return if he has finished the cards in hand
+    */
     public boolean noCardsInHand() {
         return this.hand.getCardsInHand().isEmpty();
     }

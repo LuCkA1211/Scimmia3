@@ -9,6 +9,9 @@ public class HumanPlayer extends Player {
         super(nickname);
     }
     
+    /*
+    Play a card given an index taken as an input
+    */
     @Override
     public void playCardFromIndex(int indexCardPlay, Table table) {
         Card cardToBePlayed = this.hand.getCardFromIndex(indexCardPlay);

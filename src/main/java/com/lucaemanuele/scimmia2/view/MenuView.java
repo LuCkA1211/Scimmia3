@@ -33,6 +33,13 @@ public class MenuView {
         System.out.println("Ciao! Alla prossima!");
     }
     
+    /*
+    While the player won't stop to play, create the modality based on the input.
+    TODO Standard and Point Custom (first, apply the design pattern)
+    */
+    /*
+    E' l'unica parte che non mi convince molto
+    */
     public void startScimmia(HumanPlayer player) {
         PlayStandardGameView sgView = new PlayStandardGameView();  // Potrebbe essere Singleton
         PlayPointGameView pgView = new PlayPointGameView();  // Potrebbe essere Singleton
@@ -42,6 +49,9 @@ public class MenuView {
             this.printMenu(player);
             indexMenu = this.getMenuChoice();
             switch(indexMenu) {
+                /*
+                Factory (Singleton) + Strategy (?)
+                */
                 case 1:
                     StandardGame sg = this.menuHandler.createStandardGame(player);
                     sgView.setGame(sg);  // Non ricreo la View

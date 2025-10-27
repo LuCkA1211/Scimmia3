@@ -11,6 +11,9 @@ import java.util.Scanner;
 public abstract class PlayGameView {
     protected Game game;
     
+    /*
+    Set the current game the player is going to play
+    */
     public void setGame(Game game) {
         this.game = game;
     }
@@ -79,6 +82,10 @@ public abstract class PlayGameView {
         System.out.println();
     }
     
+    /*
+    Interaction between player and game.
+    Represent the classic mechanic of the game
+    */
     public void play() {
         this.printRules();
         Card faceUpCard = this.game.start();
@@ -90,6 +97,10 @@ public abstract class PlayGameView {
         this.printWinner(winner);
     }
     
+    /*
+    Describe the interaction between player and the game in order to take a turn.
+    See System Diagram
+    */
     public void takeTurn() {
         int indexCard = 0;
         String nicknameCurrentPlayer = this.game.assignPlayer();
@@ -121,6 +132,10 @@ public abstract class PlayGameView {
         this.endTurn();
     }
     
+    /*
+    Describe what happens at the end of the turn.
+    To be implemented in each modality
+    */
     public abstract void endTurn();
         
 }

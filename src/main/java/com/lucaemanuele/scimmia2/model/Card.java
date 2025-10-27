@@ -26,16 +26,15 @@ public abstract class Card {
         this.color = color;
     }
     
-    
-    @Override
-    public String toString() {
-        return this.color + " " + this.value;
-    }
-    
+        
     /*
     Implemented in each type of card
     */
     public abstract void effect(Player currentPlayer, Player nextPlayer, Deck deck);
 
+    /*
+    Return the description of the effect
+    */
+    
     public abstract String descriptionEffect();
 }

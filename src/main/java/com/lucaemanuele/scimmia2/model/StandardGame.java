@@ -1,7 +1,7 @@
 package com.lucaemanuele.scimmia2.model;
 
-import com.lucaemanuele.scimmia2.model.*;
-import java.util.ArrayList;
+//import com.lucaemanuele.scimmia2.model.*;
+//import java.util.ArrayList;
 
 public class StandardGame extends Game {
     
@@ -9,7 +9,10 @@ public class StandardGame extends Game {
         super(player, deckDesc);
     }
         
-        
+    /*
+    Verify if the currentPlayer has no card in the hand or there are no card in deck.
+    In the case of the latter, the winner is the player which has less card in hand
+    */    
     @Override
     public void checkEndGame() {
         if(this.currentPlayer.noCardsInHand()) {

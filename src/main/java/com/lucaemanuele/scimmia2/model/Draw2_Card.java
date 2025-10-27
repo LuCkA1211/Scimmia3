@@ -15,6 +15,9 @@ public class Draw2_Card extends Card {
         this.color = "Black";
     }
     
+    /*
+    Return the type of card
+    */
     @Override
     public String toString() {
         return "Draw_2";
@@ -29,6 +32,10 @@ public class Draw2_Card extends Card {
         nextPlayer.addCardsToHand(cardsDrawn);
     }
     
+    /*
+    Return the description of the effect
+    */
+    @Override
     public String descriptionEffect() {
         return "Il prossimo giocatore pesca due carte";
     }

@@ -11,15 +11,21 @@ public class PointGame extends Game {
 
     public PointGame(HumanPlayer player, DeckDescription deckDesc) {
         super(player, deckDesc);
-        for(Player p : players) {
+        for(Player p : players) {  // Attribute added wrt Game
             this.playerPoints.put(p, 0);
         }
     }
 
+    /*
+    Getter and setter
+    */
     public HashMap<Player, Integer> getPlayerPoints() {
         return playerPoints;
     }
 
+    /*
+    Update the points of the currentPlayer if he has played
+    */
     public void updatePoints() {
         if (this.currentPlayer.hasPlayed()) {
             Card playedCard = this.table.getFaceUpCard();
@@ -27,6 +33,10 @@ public class PointGame extends Game {
         }
     }
     
+    /*
+    Verify if the currentPlayer has reached more than 100 points or has finished the cards in hand or the deck is empty.
+    In the case of the last two, verify which player has most point
+    */
     @Override
     public void checkEndGame() {
         this.updatePoints();

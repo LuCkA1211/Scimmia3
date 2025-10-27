@@ -10,11 +10,25 @@ public class NormalCard extends Card {
         this.color = color;
     }
 
+    /*
+    Does nothing (at the moment)
+    */
     @Override
     public void effect(Player currentPlayer, Player nextPlayer, Deck deck) {
         
     }
     
+    /*
+    Return the color and value of the card
+    */
+    @Override
+    public String toString() {
+        return this.color + " " + this.value;
+    }
+    
+    /*
+    Return the description of the effect. In this case, says that it hasn't an effect
+    */
     public String descriptionEffect() {
         return "Questa carta non ha particolari effetti";
     }

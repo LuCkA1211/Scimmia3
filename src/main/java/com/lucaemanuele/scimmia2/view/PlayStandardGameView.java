@@ -16,6 +16,9 @@ public class PlayStandardGameView extends PlayGameView {
         System.out.println();
     }
     
+    /*
+    Tell the game that the player has ended the turn
+    */
     @Override
     public void endTurn() {
         ((StandardGame) this.game).passTurn();
