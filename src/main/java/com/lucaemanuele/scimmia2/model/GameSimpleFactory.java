@@ -1,11 +1,18 @@
-package com.lucaemanuele.scimmia2.controller;
+package com.lucaemanuele.scimmia2.model;
 
-import com.lucaemanuele.scimmia2.model.PointGame;
-import com.lucaemanuele.scimmia2.model.StandardGame;
-import com.lucaemanuele.scimmia2.model.DeckDescription;
-import com.lucaemanuele.scimmia2.model.HumanPlayer;
-
-public class MenuHandler {
+public class GameSimpleFactory {
+    private static GameSimpleFactory instance = null;
+    
+    public static GameSimpleFactory getInstance() {
+        if(instance == null) {
+            instance = new GameSimpleFactory();
+        }
+        return instance;
+    }
+    
+    private GameSimpleFactory() {
+        
+    }
     
     public StandardGame createStandardGame(HumanPlayer player) {
         DeckDescription deckDesc = new DeckDescription(5,5,5,5);
@@ -14,7 +21,6 @@ public class MenuHandler {
     }
     
     public PointGame createPointGame(HumanPlayer player) {
-        //DeckDescription deckDesc = new DeckDescription(0,0,0,0);
         DeckDescription deckDesc = new DeckDescription(5,5,5,5);
         PointGame pg = new PointGame(player, deckDesc);
         return pg;

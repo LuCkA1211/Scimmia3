@@ -85,6 +85,8 @@ public abstract class PlayGameView {
         System.out.println();
     }
     
+    public abstract void startGame(HumanPlayer player);
+    
     /*
     Interaction between player and game.
     Represent the classic mechanic of the game

@@ -1,5 +1,7 @@
 package com.lucaemanuele.scimmia2.view;
 
+import com.lucaemanuele.scimmia2.model.GameSimpleFactory;
+import com.lucaemanuele.scimmia2.model.HumanPlayer;
 import com.lucaemanuele.scimmia2.model.StandardGame;
 
 public class PlayStandardGameView extends PlayGameView {
@@ -14,6 +16,14 @@ public class PlayStandardGameView extends PlayGameView {
     
     private PlayStandardGameView() {
         super();
+    }
+    
+    @Override
+    public void startGame(HumanPlayer player) {
+        GameSimpleFactory gsf = GameSimpleFactory.getInstance();
+        StandardGame sg = gsf.createStandardGame(player);
+        this.setGame(sg);
+        this.play();
     }
     
     @Override

@@ -1,7 +1,10 @@
 package com.lucaemanuele.scimmia2.view;
 
+import com.lucaemanuele.scimmia2.model.GameSimpleFactory;
+import com.lucaemanuele.scimmia2.model.HumanPlayer;
 import com.lucaemanuele.scimmia2.model.PointGame;
 import com.lucaemanuele.scimmia2.model.Player;
+import com.lucaemanuele.scimmia2.model.StandardGame;
 import java.util.HashMap;
 
 public class PlayPointGameView extends PlayGameView {
@@ -16,6 +19,14 @@ public class PlayPointGameView extends PlayGameView {
     
     private PlayPointGameView() {
         super();
+    }
+    
+    @Override
+    public void startGame(HumanPlayer player) {
+        GameSimpleFactory gsf = GameSimpleFactory.getInstance();
+        PointGame pg = gsf.createPointGame(player);
+        this.setGame(pg);
+        this.play();
     }
     
     public void printActualPoints(HashMap<Player, Integer> playerPoints) {

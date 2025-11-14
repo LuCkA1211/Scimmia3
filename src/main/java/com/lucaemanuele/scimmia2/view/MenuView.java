@@ -1,16 +1,15 @@
 package com.lucaemanuele.scimmia2.view;
 
-import com.lucaemanuele.scimmia2.controller.MenuHandler;
+import com.lucaemanuele.scimmia2.model.GameSimpleFactory;
 import com.lucaemanuele.scimmia2.model.PointGame;
 import com.lucaemanuele.scimmia2.model.StandardGame;
 import com.lucaemanuele.scimmia2.model.HumanPlayer;
 import java.util.Scanner;
 
 public class MenuView {
-    private MenuHandler menuHandler;
     
-    public MenuView(MenuHandler menuHandler) {
-        this.menuHandler = menuHandler;
+    public MenuView() {
+        
     }
     public void printMenu(HumanPlayer p) {
         System.out.println("Bentornato " + p.getNickname() + "!");
@@ -49,18 +48,11 @@ public class MenuView {
             this.printMenu(player);
             indexMenu = this.getMenuChoice();
             switch(indexMenu) {
-                /*
-                Factory (Singleton) + Strategy (?)
-                */
                 case 1:
-                    StandardGame sg = this.menuHandler.createStandardGame(player);
-                    sgView.setGame(sg);  // Non ricreo la View
-                    sgView.play();
+                    sgView.startGame(player);
                     break;
                 case 2:
-                    PointGame pg = this.menuHandler.createPointGame(player);
-                    pgView.setGame(pg);
-                    pgView.play();
+                    pgView.startGame(player);
                     break;
                 default:
                     this.printExitGame();
