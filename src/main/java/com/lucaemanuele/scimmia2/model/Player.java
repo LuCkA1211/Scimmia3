@@ -139,5 +139,9 @@ public abstract class Player {
         return this.hand.getCardsInHand().isEmpty();
     }
     
+    public void clearHand() {
+        this.hand = new Hand();
+    }
+    
     
 }

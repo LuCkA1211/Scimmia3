@@ -41,8 +41,8 @@ public class MenuView {
     E' l'unica parte che non mi convince molto
     */
     public void startScimmia(HumanPlayer player) {
-        PlayStandardGameView sgView = new PlayStandardGameView();  // Potrebbe essere Singleton
-        PlayPointGameView pgView = new PlayPointGameView();  // Potrebbe essere Singleton
+        PlayStandardGameView sgView = PlayStandardGameView.getInstance();  // Potrebbe essere Singleton
+        PlayPointGameView pgView = PlayPointGameView.getInstance();  // Potrebbe essere Singleton
         boolean stopScimmia = false;
         int indexMenu;
         while(!stopScimmia) {

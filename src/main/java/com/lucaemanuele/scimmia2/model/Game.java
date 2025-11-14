@@ -19,8 +19,9 @@ public abstract class Game {
         this.numberStartingCards = 7;
         AIPlayer aiPlayer = new AIPlayer("AI1");
         AIPlayer aplayer = new AIPlayer("AI2");  // Test purpose
+        player.clearHand();
         this.players = new ArrayList<>();
-        this.players.add(aplayer);
+        this.players.add(player);
         this.players.add(aiPlayer);
         this.table = new Table(deckDesc);
         this.cardEffectActivator = new CardEffectActivator();

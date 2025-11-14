@@ -5,6 +5,18 @@ import com.lucaemanuele.scimmia2.model.Player;
 import java.util.HashMap;
 
 public class PlayPointGameView extends PlayGameView {
+    private static PlayPointGameView instance = null;
+    
+    public static PlayPointGameView getInstance() {
+        if(instance == null) {
+            instance = new PlayPointGameView();
+        }
+        return instance;
+    }
+    
+    private PlayPointGameView() {
+        super();
+    }
     
     public void printActualPoints(HashMap<Player, Integer> playerPoints) {
         System.out.println("I punteggi attuali sono: ");

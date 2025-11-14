@@ -11,6 +11,9 @@ import java.util.Scanner;
 public abstract class PlayGameView {
     protected Game game;
     
+    protected PlayGameView() {
+        
+    }
     /*
     Set the current game the player is going to play
     */

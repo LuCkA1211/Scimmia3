@@ -3,6 +3,18 @@ package com.lucaemanuele.scimmia2.view;
 import com.lucaemanuele.scimmia2.model.StandardGame;
 
 public class PlayStandardGameView extends PlayGameView {
+    private static PlayStandardGameView instance = null;
+    
+    public static PlayStandardGameView getInstance() {
+        if(instance == null) {
+            instance = new PlayStandardGameView();
+        }
+        return instance;
+    }
+    
+    private PlayStandardGameView() {
+        super();
+    }
     
     @Override
     public void printRules() {

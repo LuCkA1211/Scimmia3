@@ -14,6 +14,7 @@ public class MenuHandler {
     }
     
     public PointGame createPointGame(HumanPlayer player) {
+        //DeckDescription deckDesc = new DeckDescription(0,0,0,0);
         DeckDescription deckDesc = new DeckDescription(5,5,5,5);
         PointGame pg = new PointGame(player, deckDesc);
         return pg;
