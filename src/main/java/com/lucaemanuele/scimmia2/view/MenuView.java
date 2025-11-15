@@ -34,14 +34,10 @@ public class MenuView {
     
     /*
     While the player won't stop to play, create the modality based on the input.
-    TODO Standard and Point Custom (first, apply the design pattern)
-    */
-    /*
-    E' l'unica parte che non mi convince molto
     */
     public void startScimmia(HumanPlayer player) {
-        PlayStandardGameView sgView = PlayStandardGameView.getInstance();  // Potrebbe essere Singleton
-        PlayPointGameView pgView = PlayPointGameView.getInstance();  // Potrebbe essere Singleton
+        PlayStandardGameView sgView = PlayStandardGameView.getInstance();
+        PlayPointGameView pgView = PlayPointGameView.getInstance();
         boolean stopScimmia = false;
         int indexMenu;
         while(!stopScimmia) {
