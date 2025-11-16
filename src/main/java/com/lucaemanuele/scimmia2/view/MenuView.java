@@ -7,6 +7,7 @@ import com.lucaemanuele.scimmia2.model.HumanPlayer;
 import java.util.Scanner;
 
 public class MenuView {
+    private Scanner scan = new Scanner(System.in);
     
     public MenuView() {
         
@@ -23,8 +24,8 @@ public class MenuView {
     }
     
     public int getMenuChoice() {
-        Scanner scan = new Scanner(System.in);
-        int indexMenu = scan.nextInt();
+        int indexMenu = this.scan.nextInt();
+        this.scan.nextLine();
         return indexMenu;
     }
     

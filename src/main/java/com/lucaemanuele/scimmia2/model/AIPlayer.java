@@ -9,9 +9,9 @@ Class which implements the Player governed by the system
 public class AIPlayer extends Player {
     private IAISelectCardStrategy selectCardStrategy;  // Composition
     
-    public AIPlayer(String nickname) {
+    public AIPlayer(String nickname, IAISelectCardStrategyFactory factory, String difficulty) {
         super(nickname);
-        this.selectCardStrategy = new AIEasyStandardGameStrategy();
+        this.selectCardStrategy = factory.createStrategy(difficulty);
     }
 
     public IAISelectCardStrategy getSelectCardStrategy() {

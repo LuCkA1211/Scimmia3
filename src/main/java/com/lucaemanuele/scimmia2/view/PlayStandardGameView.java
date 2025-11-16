@@ -21,7 +21,9 @@ public class PlayStandardGameView extends PlayGameView {
     @Override
     public void startGame(HumanPlayer player) {
         GameSimpleFactory gsf = GameSimpleFactory.getInstance();
-        StandardGame sg = gsf.createStandardGame(player);
+        this.printDifficulty();
+        String difficulty = this.getDifficulty();
+        StandardGame sg = gsf.createStandardGame(player, difficulty);
         this.setGame(sg);
         this.play();
     }

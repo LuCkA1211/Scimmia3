@@ -6,10 +6,12 @@ import com.lucaemanuele.scimmia2.model.Deck;
 import com.lucaemanuele.scimmia2.model.HumanPlayer;
 import com.lucaemanuele.scimmia2.model.Player;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public abstract class PlayGameView {
     protected Game game;
+    protected Scanner scan = new Scanner(System.in);
     
     protected PlayGameView() {
         
@@ -69,10 +71,25 @@ public abstract class PlayGameView {
         }
     }
     
+    public void printDifficulty() {
+        System.out.println("Seleziona la difficoltà");
+        System.out.println("1) Easy");
+        System.out.println("2) Hard");
+    }
+    
     public int getPlayableCard() {
-        Scanner scan = new Scanner(System.in);
-        int indexCardPlay = scan.nextInt();
+        int indexCardPlay = this.scan.nextInt();
+        this.scan.nextLine();
         return indexCardPlay - 1;
+    }
+    
+    public String getDifficulty() {
+        int difficultyInt = this.scan.nextInt();
+        this.scan.nextLine();
+        HashMap <Integer, String> difficultyMap = new HashMap<>();
+        difficultyMap.put(1, "Easy");
+        difficultyMap.put(2, "Hard");
+        return difficultyMap.get(difficultyInt);
     }
 
     public void printDrawnCard(Card drawnCard) {

@@ -15,14 +15,11 @@ public abstract class Game {
     protected CardEffectActivator cardEffectActivator;
     private int indexPlayer;
     
-    public Game(HumanPlayer player, DeckDescription deckDesc) {
+    public Game(HumanPlayer player, DeckDescription deckDesc, String difficulty) {
         this.numberStartingCards = 7;
-        AIPlayer aiPlayer = new AIPlayer("AI1");
-        AIPlayer aplayer = new AIPlayer("AI2");  // Test purpose
         player.clearHand();
         this.players = new ArrayList<>();
         this.players.add(player);
-        this.players.add(aiPlayer);
         this.table = new Table(deckDesc);
         this.cardEffectActivator = new CardEffectActivator();
         this.winner = null;

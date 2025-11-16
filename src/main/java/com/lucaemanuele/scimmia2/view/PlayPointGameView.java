@@ -24,7 +24,9 @@ public class PlayPointGameView extends PlayGameView {
     @Override
     public void startGame(HumanPlayer player) {
         GameSimpleFactory gsf = GameSimpleFactory.getInstance();
-        PointGame pg = gsf.createPointGame(player);
+        this.printDifficulty();
+        String difficulty = this.getDifficulty();
+        PointGame pg = gsf.createPointGame(player, difficulty);
         this.setGame(pg);
         this.play();
     }

@@ -14,15 +14,15 @@ public class GameSimpleFactory {
         
     }
     
-    public StandardGame createStandardGame(HumanPlayer player) {
+    public StandardGame createStandardGame(HumanPlayer player, String difficulty) {
         DeckDescription deckDesc = new DeckDescription(5,5,5,5);
-        StandardGame sg = new StandardGame(player, deckDesc);
+        StandardGame sg = new StandardGame(player, deckDesc, difficulty);
         return sg;
     }
     
-    public PointGame createPointGame(HumanPlayer player) {
+    public PointGame createPointGame(HumanPlayer player, String difficulty) {
         DeckDescription deckDesc = new DeckDescription(5,5,5,5);
-        PointGame pg = new PointGame(player, deckDesc);
+        PointGame pg = new PointGame(player, deckDesc, difficulty);
         return pg;
     }
     

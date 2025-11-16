@@ -9,8 +9,11 @@ import java.util.HashMap;
 public class PointGame extends Game {
     private HashMap<Player, Integer> playerPoints = new HashMap<>();
 
-    public PointGame(HumanPlayer player, DeckDescription deckDesc) {
-        super(player, deckDesc);
+    public PointGame(HumanPlayer player, DeckDescription deckDesc, String difficulty) {
+        super(player, deckDesc, difficulty);
+        AIPointGameSelectCardFactory factory = AIPointGameSelectCardFactory.getInstance();
+        AIPlayer aiPlayer = new AIPlayer("AI1", factory, difficulty);
+        this.players.add(aiPlayer);
         for(Player p : players) {  // Attribute added wrt Game
             this.playerPoints.put(p, 0);
         }

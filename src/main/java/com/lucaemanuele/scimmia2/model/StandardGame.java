@@ -5,8 +5,11 @@ package com.lucaemanuele.scimmia2.model;
 
 public class StandardGame extends Game {
     
-    public StandardGame(HumanPlayer player, DeckDescription deckDesc) {
-        super(player, deckDesc);
+    public StandardGame(HumanPlayer player, DeckDescription deckDesc, String difficulty) {
+        super(player, deckDesc, difficulty);
+        AIStandardGameSelectCardFactory factory = AIStandardGameSelectCardFactory.getInstance();
+        AIPlayer aiPlayer = new AIPlayer("AI1", factory, difficulty);
+        this.players.add(aiPlayer);
     }
         
     /*
