@@ -1,8 +1,5 @@
 package com.lucaemanuele.scimmia2.view;
 
-import com.lucaemanuele.scimmia2.model.GameSimpleFactory;
-import com.lucaemanuele.scimmia2.model.PointGame;
-import com.lucaemanuele.scimmia2.model.StandardGame;
 import com.lucaemanuele.scimmia2.model.HumanPlayer;
 import java.util.Scanner;
 
@@ -17,8 +14,6 @@ public class MenuView {
         System.out.println("Cosa vuoi fare oggi?");
         System.out.println("1) Standard Game");
         System.out.println("2) Point Game");
-        System.out.println("3) Standard Game con custom deck");
-        System.out.println("4) Point Game con custom deck");
         System.out.println("Se vuoi uscire inserisci un numero diverso");
         System.out.println("Inserisci il numero sequenziale");
     }

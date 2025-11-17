@@ -57,8 +57,15 @@ public class AIHardStandardGameStrategy implements IAISelectCardStrategy {
         /*
         Take the choice
         */
-        int colorOccurence = colorCardsInHandHashMap.get(lastFaceUpCard.getColor());
-        int valueOccurence = valueCardsInHandHashMap.get(lastFaceUpCard.getValue());
+        int colorOccurence = 0;
+        if(colorCardsInHandHashMap.containsKey(lastFaceUpCard.getColor())) {
+            colorOccurence = colorCardsInHandHashMap.get(lastFaceUpCard.getColor());
+        }
+        
+        int valueOccurence = 0;
+        if(valueCardsInHandHashMap.containsKey(lastFaceUpCard.getValue())) {
+            valueOccurence = valueCardsInHandHashMap.get(lastFaceUpCard.getValue());
+        }
         
         if(valueOccurence >= colorOccurence) {
             return rand.nextInt(playableCardsForValue.size());
