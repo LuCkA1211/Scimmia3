@@ -4,4 +4,6 @@ import java.util.ArrayList;
 
 public interface IDrawRule {
     public ArrayList<Card> draw();
+    
+    public Game getGame();
 }

@@ -77,6 +77,11 @@ public abstract class PlayGameView {
         System.out.println("2) Hard");
     }
     
+    public void printNumberCardsToDraw() {
+        System.out.println("Inserisci il numero di carte massimo da pescare quando non hai carte giocabili");
+        System.out.println("Se non vuoi avere limiti inserisci -1");
+    }
+    
     public int getPlayableCard() {
         int indexCardPlay = this.scan.nextInt();
         this.scan.nextLine();
@@ -90,6 +95,12 @@ public abstract class PlayGameView {
         difficultyMap.put(1, "Easy");
         difficultyMap.put(2, "Hard");
         return difficultyMap.get(difficultyInt);
+    }
+    
+    public int getNumberCardsToDraw() {
+        int numberCardsToDraw = this.scan.nextInt();
+        this.scan.nextLine();
+        return numberCardsToDraw;
     }
 
     public void printDrawnCards(ArrayList<Card> drawnCards) {

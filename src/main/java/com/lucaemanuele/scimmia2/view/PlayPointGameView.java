@@ -2,9 +2,11 @@ package com.lucaemanuele.scimmia2.view;
 
 import com.lucaemanuele.scimmia2.model.GameSimpleFactory;
 import com.lucaemanuele.scimmia2.model.HumanPlayer;
+import com.lucaemanuele.scimmia2.model.PenaltyOnDrawnCardsDrawRuleDecorator;
 import com.lucaemanuele.scimmia2.model.PointGame;
 import com.lucaemanuele.scimmia2.model.Player;
-import com.lucaemanuele.scimmia2.model.StandardGame;
+import com.lucaemanuele.scimmia2.model.UnlimitedDrawRuleDecorator;
+import com.lucaemanuele.scimmia2.model.BaseDrawRule;
 import java.util.HashMap;
 
 public class PlayPointGameView extends PlayGameView {
@@ -26,9 +28,25 @@ public class PlayPointGameView extends PlayGameView {
         GameSimpleFactory gsf = GameSimpleFactory.getInstance();
         this.printDifficulty();
         String difficulty = this.getDifficulty();
+        this.printNumberCardsToDraw();
+        int numberCardsToDraw = this.getNumberCardsToDraw();
+        this.printPenalty();
+        String penalty = this.getPenalty();
         PointGame pg = gsf.createPointGame(player, difficulty);
+        PenaltyOnDrawnCardsDrawRuleDecorator drawRule = new PenaltyOnDrawnCardsDrawRuleDecorator(new UnlimitedDrawRuleDecorator(new BaseDrawRule(pg)));
+        pg.setDrawRule(drawRule);
         this.setGame(pg);
         this.play();
+    }
+    
+    public void printPenalty() {
+        System.out.println("Vuoi inserire la penalità di 5 punti per ogni carta pescata?");
+        System.out.println("Scrivi Y se la vuoi, N se non la vuoi");
+    }
+    
+    public String getPenalty() {
+        String penalty = this.scan.nextLine();
+        return penalty;
     }
     
     public void printActualPoints(HashMap<Player, Integer> playerPoints) {

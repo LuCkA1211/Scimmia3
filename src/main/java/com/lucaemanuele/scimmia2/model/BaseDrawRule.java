@@ -22,4 +22,9 @@ public class BaseDrawRule implements IDrawRule {
         }
         return cardsDrawn;
     }
+    
+    @Override
+    public Game getGame() {
+        return this.game;
+    }
 }
