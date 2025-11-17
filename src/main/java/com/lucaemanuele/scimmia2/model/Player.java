@@ -125,10 +125,9 @@ public abstract class Player {
     If the drawn card is playable, then he plays it, otherwise he adds it to the hand
     */
     public void handleDrawnCard(Card drawnCard, Table table) {
+        this.hand.addCard(drawnCard);
         if(this.hand.isPlayable(drawnCard)) {
             this.playCard(drawnCard, table);
-        } else {
-            this.hand.addCard(drawnCard);
         }
     }
     

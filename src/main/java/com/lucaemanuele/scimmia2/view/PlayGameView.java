@@ -92,8 +92,15 @@ public abstract class PlayGameView {
         return difficultyMap.get(difficultyInt);
     }
 
-    public void printDrawnCard(Card drawnCard) {
-        System.out.println("Hai pescato " + drawnCard.toString());
+    public void printDrawnCards(ArrayList<Card> drawnCards) {
+        System.out.print("Hai pescato: ");
+        for(int i = 0; i < drawnCards.size(); i++) {
+            System.out.print(drawnCards.get(i).toString());
+            if((drawnCards.size() != 1) && (i != (drawnCards.size() - 1))) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println();
         System.out.println();
     }
     
@@ -140,9 +147,9 @@ public abstract class PlayGameView {
                 }
                 this.game.playCardFromIndex(indexCard);
             } else {
-                Card drawnCard = this.game.drawCard();
+                ArrayList<Card> drawnCards = this.game.draw();
                 if(this.game.getCurrentPlayer() instanceof HumanPlayer) {
-                    this.printDrawnCard(drawnCard);
+                    this.printDrawnCards(drawnCards);
                 }
             }
             if(this.game.hasCurrentPlayerPlayed()) {

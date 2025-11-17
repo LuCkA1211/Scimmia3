@@ -1,8 +1,10 @@
 package com.lucaemanuele.scimmia2.view;
 
+import com.lucaemanuele.scimmia2.model.BaseDrawRule;
 import com.lucaemanuele.scimmia2.model.GameSimpleFactory;
 import com.lucaemanuele.scimmia2.model.HumanPlayer;
 import com.lucaemanuele.scimmia2.model.StandardGame;
+import com.lucaemanuele.scimmia2.model.UnlimitedDrawRuleDecorator;
 
 public class PlayStandardGameView extends PlayGameView {
     private static PlayStandardGameView instance = null;
@@ -24,6 +26,8 @@ public class PlayStandardGameView extends PlayGameView {
         this.printDifficulty();
         String difficulty = this.getDifficulty();
         StandardGame sg = gsf.createStandardGame(player, difficulty);
+        UnlimitedDrawRuleDecorator drawRule = new UnlimitedDrawRuleDecorator(new BaseDrawRule(sg), sg);
+        sg.setDrawRule(drawRule);
         this.setGame(sg);
         this.play();
     }

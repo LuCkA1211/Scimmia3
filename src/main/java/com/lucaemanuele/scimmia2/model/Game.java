@@ -13,7 +13,8 @@ public abstract class Game {
     protected Table table;
     protected int numberStartingCards;
     protected CardEffectActivator cardEffectActivator;
-    private int indexPlayer;
+    protected int indexPlayer;
+    protected IDrawRule drawRule;
     
     public Game(HumanPlayer player, DeckDescription deckDesc, String difficulty) {
         this.numberStartingCards = 7;
@@ -25,6 +26,10 @@ public abstract class Game {
         this.winner = null;
         this.isEnded = false;
         this.indexPlayer = 0;
+    }
+    
+    public void setDrawRule(IDrawRule drawRule) {
+        this.drawRule = drawRule;
     }
     
     /*
@@ -120,6 +125,7 @@ public abstract class Game {
     */
     public String assignPlayer() {
         this.currentPlayer = this.players.get(this.indexPlayer);
+        this.currentPlayer.setHasPlayed(false);
         this.nextPlayer = this.players.get((this.indexPlayer + 1) % this.players.size());
         return this.currentPlayer.getNickname();
     }
@@ -149,12 +155,8 @@ public abstract class Game {
     /*
     Make a player draw a card, playing it if possible (and activating the effect) and return it to the view
     */
-    public Card drawCard() {
-        Card cardDrawn = this.currentPlayer.drawCard(table);
-        if(this.currentPlayer.hasPlayed()) {
-            this.activateEffect();
-        }
-        return cardDrawn;
+    public ArrayList<Card> draw() {
+        return this.drawRule.draw();
     }
     
     /*
