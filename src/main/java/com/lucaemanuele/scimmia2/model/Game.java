@@ -3,6 +3,7 @@ package com.lucaemanuele.scimmia2.model;
 //import com.lucaemanuele.scimmia2.model.*;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 
 public abstract class Game {
     protected boolean isEnded;
@@ -20,6 +21,11 @@ public abstract class Game {
         this.numberStartingCards = 7;
         player.clearHand();
         this.players = new ArrayList<>();
+        AIStandardGameSelectCardFactory factory = AIStandardGameSelectCardFactory.getInstance();
+        /*
+        AIPlayer aiPlayer = new AIPlayer("ProvaAI", factory, "Easy");
+        this.players.add(aiPlayer);
+        */
         this.players.add(player);
         this.table = new Table(deckDesc);
         this.cardEffectActivator = new CardEffectActivator();
@@ -81,6 +87,10 @@ public abstract class Game {
 
     public void setNextPlayer(Player nextPlayer) {
         this.nextPlayer = nextPlayer;
+    }
+    
+    public void createAndSetDrawRule(int numberCardsToDraw, String penalty) {
+        this.drawRule = DrawRuleSimpleFactory.getInstance().getDrawRule(numberCardsToDraw, penalty, this);
     }
     
     /*
@@ -190,5 +200,17 @@ public abstract class Game {
     */
     public boolean hasCurrentPlayerTakenTurn() {
         return this.currentPlayer.hasTakenTurn();
+    }
+    
+    public HashMap<Player, Integer> getNumberOfCardsInHand() {
+        HashMap<Player, Integer> numberCardsInHandPlayer = new HashMap<>();
+        for(Player p : this.players) {
+            numberCardsInHandPlayer.put(p, p.getCardsInHand().size());
+        }
+        return numberCardsInHandPlayer;
+    }
+    
+    public int getNumberOfCardsInDeck() {
+        return this.table.getNumberOfCardsInDeck();
     }
 }

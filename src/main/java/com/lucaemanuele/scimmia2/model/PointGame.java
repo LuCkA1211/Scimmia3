@@ -47,6 +47,7 @@ public class PointGame extends Game {
             this.winner = this.currentPlayer;
             this.isEnded = true;
         } else if((this.currentPlayer.getHand().getCardsInHand().isEmpty()) || (this.table.getDeck().getCardsInDeck().isEmpty())) {
+            this.isEnded = true;
             int maxPoints = -1;
             this.playerPoints.forEach((p, points) -> {
                 if(points > maxPoints) {

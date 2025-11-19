@@ -65,4 +65,8 @@ public class Table {
         this.setFaceUpCard(c);
     }
     
+    public int getNumberOfCardsInDeck() {
+        return this.deck.getCardsInDeck().size();
+    }
+    
 }

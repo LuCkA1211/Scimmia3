@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Random;
 
 public class AIHardStandardGameStrategy implements IAISelectCardStrategy {
-    
+    Random rand = new Random();
     @Override
     public int selectCardToPlay(AIPlayer aiPlayer) {
         ArrayList<Card> playableCards = aiPlayer.getHand().getPlayableCards();
@@ -17,7 +17,15 @@ public class AIHardStandardGameStrategy implements IAISelectCardStrategy {
             return 0;
         }
         
-        Random rand = new Random();
+        /*
+        Return always the first special card if it has one in hand
+        */
+        for(Card c : playableCards) {
+            if(!(c instanceof NormalCard)) {
+                return playableCards.indexOf(c);
+            }
+        }
+        
         Card lastFaceUpCard = aiPlayer.getHand().getLastFaceUpCard();
         ArrayList<Card> cardsInHand = aiPlayer.getCardsInHand();
         
@@ -57,6 +65,15 @@ public class AIHardStandardGameStrategy implements IAISelectCardStrategy {
         /*
         Take the choice
         */
+        
+        /*
+        If the faceUpCard is special and AIPlayer has not special, play a random card.
+        Could be improved
+        */
+        if(!(lastFaceUpCard instanceof NormalCard)) {
+            return rand.nextInt(playableCards.size());
+        }
+        
         int colorOccurence = 0;
         if(colorCardsInHandHashMap.containsKey(lastFaceUpCard.getColor())) {
             colorOccurence = colorCardsInHandHashMap.get(lastFaceUpCard.getColor());
@@ -67,8 +84,16 @@ public class AIHardStandardGameStrategy implements IAISelectCardStrategy {
             valueOccurence = valueCardsInHandHashMap.get(lastFaceUpCard.getValue());
         }
         
+        int indexPlay = 0;
+        Card cardToPlay = null;
         if(valueOccurence >= colorOccurence) {
-            return rand.nextInt(playableCardsForValue.size());
-        } else return rand.nextInt(playableCardsForColor.size());
+            indexPlay = rand.nextInt(playableCardsForValue.size());
+            cardToPlay = playableCardsForValue.get(indexPlay);
+        } else {
+            indexPlay = rand.nextInt(playableCardsForColor.size());
+            cardToPlay = playableCardsForColor.get(indexPlay);
+        }
+        
+        return playableCards.indexOf(cardToPlay);
     }
 }

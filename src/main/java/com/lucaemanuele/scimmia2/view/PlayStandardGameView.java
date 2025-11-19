@@ -27,9 +27,7 @@ public class PlayStandardGameView extends PlayGameView {
         String difficulty = this.getDifficulty();
         this.printNumberCardsToDraw();
         int numberCardsToDraw = this.getNumberCardsToDraw();
-        StandardGame sg = gsf.createStandardGame(player, difficulty);
-        UnlimitedDrawRuleDecorator drawRule = new UnlimitedDrawRuleDecorator(new BaseDrawRule(sg));
-        sg.setDrawRule(drawRule);
+        StandardGame sg = gsf.createStandardGame(player, difficulty, numberCardsToDraw);
         this.setGame(sg);
         this.play();
     }

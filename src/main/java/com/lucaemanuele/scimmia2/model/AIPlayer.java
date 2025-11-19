@@ -11,7 +11,7 @@ public class AIPlayer extends Player {
     
     public AIPlayer(String nickname, IAISelectCardStrategyFactory factory, String difficulty) {
         super(nickname);
-        this.selectCardStrategy = factory.createStrategy(difficulty);
+        this.selectCardStrategy = factory.createStrategy(difficulty);  // It can be for Standard, Point, Easy, Hard... it does not know anything about implementatio
     }
 
     public IAISelectCardStrategy getSelectCardStrategy() {

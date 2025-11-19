@@ -37,11 +37,6 @@ public abstract class PlayGameView {
         System.out.println("Passo il turno");
     }
     
-    public void printNumberDeckCards(Deck deck) {
-        System.out.println("Carte rimanenti nel deck: " + deck.getCardsInDeck().size());
-        System.out.println();
-    }
-    
     public void printWinner(Player p) {
         System.out.println("The winner is : " + p.getNickname());
         System.out.println();
@@ -131,12 +126,30 @@ public abstract class PlayGameView {
         Card faceUpCard = this.game.start();
         this.printFaceUpCard(faceUpCard);
         while(!this.game.isEnded()) {
+            this.printGameState();
             this.takeTurn();
         }
         Player winner = this.game.getWinner();
         this.printWinner(winner);
     }
     
+    public void printGameState() {
+        this.printNumberCardsInHand();
+        this.printRemainingCardsDeck();
+    }
+    
+    public void printRemainingCardsDeck() {
+        System.out.print("Carte rimanenti nel deck: ");
+        System.out.println(this.game.getNumberOfCardsInDeck());
+        System.out.println();
+    }
+    
+    public void printNumberCardsInHand() {
+        System.out.println("Carte in mano di ogni giocatore");
+        HashMap<Player, Integer> numberCardsPlayer = this.game.getNumberOfCardsInHand();
+        numberCardsPlayer.forEach((pKey, nCards) -> System.out.println(pKey.getNickname() + ": " + nCards));
+        System.out.println();
+    }
     /*
     Describe the interaction between player and the game in order to take a turn.
     See System Diagram

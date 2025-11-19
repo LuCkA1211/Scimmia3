@@ -96,6 +96,7 @@ public class Deck {
     Return the card on top of the deck, and so the card to be drawn
     */
     public Card getTopCard() {
+        if(this.cardsInDeck.isEmpty()) return null;
         return this.cardsInDeck.remove(this.cardsInDeck.size() - 1);
     }
 }

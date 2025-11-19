@@ -18,7 +18,9 @@ public class UnlimitedDrawRuleDecorator extends DrawRuleDecorator {
     
     public ArrayList<Card> addedBehaviour(ArrayList<Card> drawnCards) {
         while(!this.game.hasCurrentPlayerPlayed()) {
-            drawnCards.addAll(this.innerComponent.draw());
+            ArrayList<Card> cardDrawn = this.innerComponent.draw();
+            if(cardDrawn.get(0) == null) return drawnCards;  // Deck is empty
+            drawnCards.addAll(cardDrawn);
         }
         return drawnCards;
     }
