@@ -17,4 +17,11 @@ public class HumanPlayer extends Player {
         Card cardToBePlayed = this.hand.getCardFromIndex(indexCardPlay);
         this.playCard(cardToBePlayed, table);
     }
+    
+    /*
+    Re-create the hand, in order to remove all the cards in the hand
+    */
+    public void clearHand() {
+        this.hand = new Hand();
+    }
 }

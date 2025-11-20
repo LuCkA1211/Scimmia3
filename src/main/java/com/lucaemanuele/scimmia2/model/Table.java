@@ -61,10 +61,16 @@ public class Table {
         this.setFaceUpCard(firstPlayableCard);
     }
     
+    /*
+    Change the faceUpCard because of a card is played
+    */
     public void playCard(Card c) {
         this.setFaceUpCard(c);
     }
     
+    /*
+    Return the number of remaining cards in the deck
+    */
     public int getNumberOfCardsInDeck() {
         return this.deck.getCardsInDeck().size();
     }

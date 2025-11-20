@@ -2,6 +2,14 @@ package com.lucaemanuele.scimmia2.model;
 
 import java.util.ArrayList;
 
+/*
+Class which implement the Strategy for Hard Mode for Point modality, in particular the selection of the card from AI.
+
+This Strategy select the card with the max value.
+
+This class represent the ConcreteStrategy of Startegy Design Pattern
+*/
+
 public class AIHardPointGameStrategy implements IAISelectCardStrategy {
     
     /*

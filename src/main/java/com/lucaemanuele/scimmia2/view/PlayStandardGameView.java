@@ -20,6 +20,9 @@ public class PlayStandardGameView extends PlayGameView {
         super();
     }
     
+    /*
+    Takes as input the choices of the rule of the user in order to create the game and plays it
+    */
     @Override
     public void startGame(HumanPlayer player) {
         GameSimpleFactory gsf = GameSimpleFactory.getInstance();

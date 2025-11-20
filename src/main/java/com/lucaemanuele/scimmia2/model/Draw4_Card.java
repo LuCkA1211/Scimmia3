@@ -37,7 +37,7 @@ public class Draw4_Card extends Card {
     */
     @Override
     public String descriptionEffect() {
-        return "Il prossimo giocatore pesca due carte";
+        return "Il prossimo giocatore pesca quattro carte";
     }
     
 }

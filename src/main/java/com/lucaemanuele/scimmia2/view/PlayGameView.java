@@ -2,7 +2,6 @@ package com.lucaemanuele.scimmia2.view;
 
 import com.lucaemanuele.scimmia2.model.Game;
 import com.lucaemanuele.scimmia2.model.Card;
-import com.lucaemanuele.scimmia2.model.Deck;
 import com.lucaemanuele.scimmia2.model.HumanPlayer;
 import com.lucaemanuele.scimmia2.model.Player;
 import java.util.ArrayList;

@@ -37,6 +37,7 @@ public class Swap_Card extends Card {
     /*
     Return the description of the effect
     */
+    @Override
     public String descriptionEffect() {
         return "Scambia le carte con il prossimo giocatore";
     }

@@ -1,6 +1,5 @@
 package com.lucaemanuele.scimmia2.model;
 
-//import com.lucaemanuele.scimmia2.model.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -21,11 +20,6 @@ public abstract class Game {
         this.numberStartingCards = 7;
         player.clearHand();
         this.players = new ArrayList<>();
-        AIStandardGameSelectCardFactory factory = AIStandardGameSelectCardFactory.getInstance();
-        /*
-        AIPlayer aiPlayer = new AIPlayer("ProvaAI", factory, "Easy");
-        this.players.add(aiPlayer);
-        */
         this.players.add(player);
         this.table = new Table(deckDesc);
         this.cardEffectActivator = new CardEffectActivator();
@@ -34,6 +28,9 @@ public abstract class Game {
         this.indexPlayer = 0;
     }
     
+    /*
+    Set the Draw Rule, after creating it
+    */
     public void setDrawRule(IDrawRule drawRule) {
         this.drawRule = drawRule;
     }
@@ -163,7 +160,9 @@ public abstract class Game {
     }
     
     /*
-    Make a player draw a card, playing it if possible (and activating the effect) and return it to the view
+    Make a player draw a card, playing it if possible (and activating the effect) and return it to the view.
+    
+    It will follow theDraw Rule chosen by the player at the creation
     */
     public ArrayList<Card> draw() {
         return this.drawRule.draw();
@@ -202,6 +201,9 @@ public abstract class Game {
         return this.currentPlayer.hasTakenTurn();
     }
     
+    /*
+    Return the number of cards in the hand for each player
+    */
     public HashMap<Player, Integer> getNumberOfCardsInHand() {
         HashMap<Player, Integer> numberCardsInHandPlayer = new HashMap<>();
         for(Player p : this.players) {
@@ -210,6 +212,9 @@ public abstract class Game {
         return numberCardsInHandPlayer;
     }
     
+    /*
+    Return the number of remaining cards in the deck
+    */
     public int getNumberOfCardsInDeck() {
         return this.table.getNumberOfCardsInDeck();
     }

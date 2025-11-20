@@ -29,6 +29,7 @@ public class NormalCard extends Card {
     /*
     Return the description of the effect. In this case, says that it hasn't an effect
     */
+    @Override
     public String descriptionEffect() {
         return "Questa carta non ha particolari effetti";
     }

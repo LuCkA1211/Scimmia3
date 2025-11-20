@@ -2,11 +2,8 @@ package com.lucaemanuele.scimmia2.view;
 
 import com.lucaemanuele.scimmia2.model.GameSimpleFactory;
 import com.lucaemanuele.scimmia2.model.HumanPlayer;
-import com.lucaemanuele.scimmia2.model.PenaltyOnDrawnCardsDrawRuleDecorator;
 import com.lucaemanuele.scimmia2.model.PointGame;
 import com.lucaemanuele.scimmia2.model.Player;
-import com.lucaemanuele.scimmia2.model.UnlimitedDrawRuleDecorator;
-import com.lucaemanuele.scimmia2.model.BaseDrawRule;
 import java.util.HashMap;
 
 public class PlayPointGameView extends PlayGameView {
@@ -23,6 +20,9 @@ public class PlayPointGameView extends PlayGameView {
         super();
     }
     
+    /*
+    Takes as input the choices of the rule of the user in order to create the game and plays it
+    */
     @Override
     public void startGame(HumanPlayer player) {
         GameSimpleFactory gsf = GameSimpleFactory.getInstance();

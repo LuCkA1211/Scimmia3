@@ -29,7 +29,7 @@ public class MenuView {
     }
     
     /*
-    While the player won't stop to play, create the modality based on the input.
+    While the player won't stop to play, plays the game with the modality chosen as input.
     */
     public void startScimmia(HumanPlayer player) {
         PlayStandardGameView sgView = PlayStandardGameView.getInstance();

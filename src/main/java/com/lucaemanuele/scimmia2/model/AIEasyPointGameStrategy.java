@@ -5,6 +5,20 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Random;
 
+/*
+Class which implement the Strategy for Easy Mode for Point modality, in particular the selection of the card from AI
+
+This strategy makes a weighted selection and is inspired from StackOverflow (weighted random selection from array),
+but it should be a known algorithm.
+
+More precisely, this strategy first sort the playable cards by value in increasing order;
+then, it computes the weight in a way that the last elements of the ArrayList are more probable to be selected;
+then, since the weights are normalized, and so between 0 and 1, the strategy select a random number between 0 and 1;
+then use this number to find the element to be chosen (selecting the first element with the weight smaller than the random number).
+
+This class represent the ConcreteStrategy of Strategy Design Pattern
+*/
+
 public class AIEasyPointGameStrategy implements IAISelectCardStrategy {
     
     @Override
@@ -20,9 +34,6 @@ public class AIEasyPointGameStrategy implements IAISelectCardStrategy {
         double weights[] = new double[playableCards.size()];
         double sumCoefficients = 0;
         
-        /*
-        Algorithm inspired from StackOverflow (weighted random selection from array)
-        */
         /*
         Compute the weights and the sum of the coefficients.
         The sum is computed in an increasing order, since the last elements are the most valuable

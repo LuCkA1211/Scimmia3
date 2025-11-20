@@ -1,9 +1,5 @@
 package com.lucaemanuele.scimmia2.model;
 
-import com.lucaemanuele.scimmia2.model.Card;
-import com.lucaemanuele.scimmia2.model.DeckDescription;
-import com.lucaemanuele.scimmia2.model.HumanPlayer;
-import com.lucaemanuele.scimmia2.model.Player;
 import java.util.HashMap;
 
 public class PointGame extends Game {
