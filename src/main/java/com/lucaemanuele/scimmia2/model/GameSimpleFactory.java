@@ -26,6 +26,7 @@ public class GameSimpleFactory {
     /*
     Creates a Standard Game
     */
+    /*
     public StandardGame createStandardGame(HumanPlayer player, String difficulty, int numberCardsToDraw) {
         DeckDescription deckDesc = new DeckDescription(5,5,5,5);
         StandardGame sg = new StandardGame(player, deckDesc, difficulty);
@@ -35,12 +36,26 @@ public class GameSimpleFactory {
     
     /*
     Creates a Point Game
-    */
     public PointGame createPointGame(HumanPlayer player, String difficulty, int numberCardsToDraw, String penalty) {
         DeckDescription deckDesc = new DeckDescription(5,5,5,5);
         PointGame pg = new PointGame(player, deckDesc, difficulty);
         pg.createAndSetDrawRule(numberCardsToDraw, penalty);
         return pg;
+    }
+    */
+    
+    public Game createGame(HumanPlayer player, String difficulty, int numberCardsToDraw, String penalty, String modality) {
+        DeckDescription deckDesc = new DeckDescription(5,5,5,5);
+        if(modality.equals("Standard")) {
+            StandardGame game = new StandardGame(player, deckDesc, difficulty);
+            game.createAndSetDrawRule(numberCardsToDraw, penalty);
+            return game;
+        } else if(modality.equals("Point")) {
+            PointGame game = new PointGame(player, deckDesc, difficulty);
+            game.createAndSetDrawRule(numberCardsToDraw, penalty);
+            return game;
+        }
+        return null;
     }
     
 }

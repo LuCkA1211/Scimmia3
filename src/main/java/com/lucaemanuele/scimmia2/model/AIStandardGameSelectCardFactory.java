@@ -7,7 +7,7 @@ This is a concrete subclass for Abstract Factory Design Pattern
 */
 public class AIStandardGameSelectCardFactory implements IAISelectCardStrategyFactory {
     
-    public static AIStandardGameSelectCardFactory instance = null;  // Singleton instance
+    private static AIStandardGameSelectCardFactory instance = null;  // Singleton instance
     
     /*
     Singleton method getInstance.

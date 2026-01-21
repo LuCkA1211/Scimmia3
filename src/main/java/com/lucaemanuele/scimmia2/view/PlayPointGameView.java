@@ -32,7 +32,7 @@ public class PlayPointGameView extends PlayGameView {
         int numberCardsToDraw = this.getNumberCardsToDraw();
         this.printPenalty();
         String penalty = this.getPenalty();
-        PointGame pg = gsf.createPointGame(player, difficulty, numberCardsToDraw, penalty);
+        PointGame pg = (PointGame) gsf.createGame(player, difficulty, numberCardsToDraw, penalty, "Point");
         this.setGame(pg);
         this.play();
     }

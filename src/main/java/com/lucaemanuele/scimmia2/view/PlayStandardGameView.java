@@ -30,7 +30,7 @@ public class PlayStandardGameView extends PlayGameView {
         String difficulty = this.getDifficulty();
         this.printNumberCardsToDraw();
         int numberCardsToDraw = this.getNumberCardsToDraw();
-        StandardGame sg = gsf.createStandardGame(player, difficulty, numberCardsToDraw);
+        StandardGame sg = (StandardGame) gsf.createGame(player, difficulty, numberCardsToDraw, "N", "Standard");
         this.setGame(sg);
         this.play();
     }
