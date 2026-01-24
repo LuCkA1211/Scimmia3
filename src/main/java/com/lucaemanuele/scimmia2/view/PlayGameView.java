@@ -82,6 +82,16 @@ public abstract class PlayGameView {
         return indexCardPlay - 1;
     }
     
+    /*
+    Verify if the indexCard inserted is correct, i.e it is not greater or less than the number of playable cards
+    */
+    public boolean verifyInputPlayableCard(int numberPlayableCards, int indexCardPlay) {
+        if(((indexCardPlay + 1) <= 0) || ((indexCardPlay + 1) > numberPlayableCards)) {
+            return false;
+        }
+        return true;
+    }
+    
     public String getDifficulty() {
         int difficultyInt = this.scan.nextInt();
         this.scan.nextLine();
@@ -149,6 +159,11 @@ public abstract class PlayGameView {
         numberCardsPlayer.forEach((pKey, nCards) -> System.out.println(pKey.getNickname() + ": " + nCards));
         System.out.println();
     }
+    
+    public void printErrorIndexPlayableCard() {
+        System.out.println("Inserisci un indice valido!!");
+    }
+    
     /*
     Describe the interaction between player and the game in order to take a turn.
     See System Diagram
@@ -166,7 +181,18 @@ public abstract class PlayGameView {
             }
             if(!playableCards.isEmpty()) {
                 if(this.game.getCurrentPlayer() instanceof HumanPlayer) {
-                    indexCard = this.getPlayableCard();
+                    // Until the indexCard is not corrected, re-insert the indexCard
+                    // Do-While instead of While because, the first time in the turn inserting the index, we don't know if it is correct or no
+                    do {
+                        indexCard = this.getPlayableCard();
+                        if(this.verifyInputPlayableCard(playableCards.size(), indexCard)) {
+                            System.out.println("Numero corretto");
+                            break;
+                        } else {
+                            this.printErrorIndexPlayableCard();
+                            System.out.println("Numero sbagliato");
+                        }
+                    } while (!this.verifyInputPlayableCard(playableCards.size(), indexCard));  // while(1) also could be ok, but this is better
                 }
                 this.game.playCardFromIndex(indexCard);
             } else {

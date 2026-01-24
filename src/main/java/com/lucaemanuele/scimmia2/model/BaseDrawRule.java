@@ -24,9 +24,6 @@ public class BaseDrawRule implements IDrawRule {
         ArrayList<Card> cardsDrawn = new ArrayList<>();
         Card cardDrawn = this.game.getCurrentPlayer().drawCard(this.game.getTable());
         cardsDrawn.add(cardDrawn);
-        if(this.game.getCurrentPlayer().hasPlayed()) {
-            this.game.activateEffect();
-        }
         return cardsDrawn;
     }
     

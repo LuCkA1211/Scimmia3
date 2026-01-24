@@ -16,7 +16,7 @@ public abstract class Game {
     protected int indexPlayer;
     protected IDrawRule drawRule;
     
-    public Game(HumanPlayer player, DeckDescription deckDesc, String difficulty) {
+    public Game(HumanPlayer player, DeckDescription deckDesc, String difficulty, int numberCardsToDraw, String penalty) {
         this.numberStartingCards = 7;
         player.clearHand();
         this.players = new ArrayList<>();
@@ -26,6 +26,7 @@ public abstract class Game {
         this.winner = null;
         this.isEnded = false;
         this.indexPlayer = 0;
+        this.createAndSetDrawRule(numberCardsToDraw, penalty);
     }
     
     /*
@@ -165,7 +166,11 @@ public abstract class Game {
     It will follow theDraw Rule chosen by the player at the creation
     */
     public ArrayList<Card> draw() {
-        return this.drawRule.draw();
+        ArrayList<Card> cardsDrawn = this.drawRule.draw();
+        if(this.getCurrentPlayer().hasPlayed()) {
+            this.activateEffect();
+        }
+        return cardsDrawn;
     }
     
     /*
