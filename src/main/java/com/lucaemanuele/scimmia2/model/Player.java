@@ -77,7 +77,7 @@ public abstract class Player {
     public ArrayList<Card> getPlayableCards(Table table) {
         Card faceUpCard = table.getFaceUpCard();
         this.hand.setLastFaceUpCard(faceUpCard);
-        ArrayList<Card> playableCards = this.hand.getPlayableCards();
+        ArrayList<Card> playableCards = this.getPlayableCardsFromHand();
         return playableCards;
     }
     
@@ -86,6 +86,10 @@ public abstract class Player {
     */
     public ArrayList<Card> getCardsInHand() {
         return this.hand.getCardsInHand();
+    }
+    
+    public ArrayList<Card> getPlayableCardsFromHand() {
+        return this.hand.getPlayableCards();
     }
     
     /*
@@ -136,6 +140,14 @@ public abstract class Player {
     */
     public boolean noCardsInHand() {
         return this.hand.getCardsInHand().isEmpty();
+    }
+    
+    public int numberCardsInHand() {
+        return this.hand.getCardsInHand().size();
+    }
+    
+    public Card getLastFaceUpCard() {
+        return this.hand.getLastFaceUpCard();
     }
     
 }

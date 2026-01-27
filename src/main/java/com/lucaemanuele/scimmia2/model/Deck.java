@@ -9,6 +9,9 @@ Class which implements the deck as a container of cards
 public class Deck {
     private ArrayList<Card> cardsInDeck = new ArrayList<>();
     private DeckDescription deckDesc;
+    private int numberCopyNormalCard = 3;
+    private int minCardValue = 1;
+    private int maxCardValue = 10;
     
     /*
     Constructor
@@ -19,8 +22,8 @@ public class Deck {
         this.deckDesc = deckDesc;
         String[] colors = {"Red","Blue","Green","Yellow"};
         for(String c : colors) {
-            for(int i = 1; i < 10; i++) {
-                for(int j = 0; j < 3; j++) {
+            for(int i = this.minCardValue; i < this.maxCardValue; i++) {
+                for(int j = 0; j < this.numberCopyNormalCard; j++) {
                     NormalCard nc = new NormalCard(i, c);
                     this.cardsInDeck.add(nc);
                 }

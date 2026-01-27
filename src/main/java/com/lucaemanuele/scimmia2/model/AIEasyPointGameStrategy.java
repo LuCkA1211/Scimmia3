@@ -24,46 +24,26 @@ public class AIEasyPointGameStrategy implements IAISelectCardStrategy {
     @Override
     public int selectCardToPlay(AIPlayer aiPlayer) {
         Random rand = new Random();
-        ArrayList<Card> playableCards = aiPlayer.getHand().getPlayableCards();
+        ArrayList<Card> playableCards = aiPlayer.getPlayableCardsFromHand();
         
-        /*
-        Sort the playableCards by value (increasing order)
-        */
-        ArrayList<Card> sortedPlayableCards = new ArrayList<>(playableCards);
-        Collections.sort(sortedPlayableCards, Comparator.comparing(Card::getValue));
+        ArrayList<Card> sortedPlayableCards = this.sortPlayableCards(playableCards);
         double weights[] = new double[playableCards.size()];
         double sumCoefficients = 0;
         
-        /*
-        Compute the weights and the sum of the coefficients.
-        The sum is computed in an increasing order, since the last elements are the most valuable
-        */
-        for(int i = 0; i < weights.length; i++) {
-            weights[i] = i + 1;
-            sumCoefficients += weights[i];
-        }
+        this.computeWeights(weights, sumCoefficients);
         
         /*
         Normalization
         */
-        for(int i = 0; i < weights.length; i++) {
-            weights[i] /= sumCoefficients;
-        }
+        this.normalizeWeights(weights, sumCoefficients);
         
         /*
         Obtain random fp element in (0;1)
         */
         double randomNumber = rand.nextDouble();
         
-        /*
-        Find the element
-        */
-        int maxIndex = 0;
-        for(int i = 0; i < weights.length; i++) {
-            if(weights[i] < randomNumber) {
-                maxIndex = i;
-            } else break;
-        }
+
+        int maxIndex = this.findElement(weights, randomNumber);
         
         /*
         Obtain the index of the card in playableCards, given the index in sortedPlayableCards
@@ -71,5 +51,51 @@ public class AIEasyPointGameStrategy implements IAISelectCardStrategy {
         Card cardToPlay = sortedPlayableCards.get(maxIndex);
         int index = playableCards.indexOf(cardToPlay);
         return index;
+    }
+    
+    /*
+    Helper functions, make the code reusable and maintenable
+    */
+    
+    /*
+    Sort the playableCards by value (increasing order)
+    */
+    public ArrayList<Card> sortPlayableCards(ArrayList<Card> playableCards) {
+        ArrayList<Card> sortedPlayableCards = new ArrayList<>(playableCards);
+        Collections.sort(sortedPlayableCards, Comparator.comparing(Card::getValue));
+        return sortedPlayableCards;
+    }
+    
+    /*
+    Compute normalization and sum of coefficients
+    */
+    public void normalizeWeights(double[] weights, double sumCoefficients) {
+        for(int i = 0; i < weights.length; i++) {
+            weights[i] /= sumCoefficients;
+        }
+    }
+    
+    /*
+    Find the element
+    */
+    public int findElement(double[] weights, double randomNumber) {
+        int maxIndex = 0;
+        for(int i = 0; i < weights.length; i++) {
+            if(weights[i] < randomNumber) {
+                maxIndex = i;
+            } else break;
+        }
+        return maxIndex;
+    }
+    
+    /*
+    Compute the weights and the sum of the coefficients.
+    The sum is computed in an increasing order, since the last elements are the most valuable
+    */
+    public void computeWeights(double[] weights, double sumCoefficients) {
+        for(int i = 0; i < weights.length; i++) {
+            weights[i] = i + 1;
+            sumCoefficients += weights[i];
+        }
     }
 }

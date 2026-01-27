@@ -19,6 +19,7 @@ public abstract class Game {
     public Game(HumanPlayer player, DeckDescription deckDesc, String difficulty, int numberCardsToDraw, String penalty) {
         this.numberStartingCards = 7;
         player.clearHand();
+        player.clearTurnState();
         this.players = new ArrayList<>();
         this.players.add(player);
         this.table = new Table(deckDesc);
@@ -170,6 +171,7 @@ public abstract class Game {
         if(this.getCurrentPlayer().hasPlayed()) {
             this.activateEffect();
         }
+        System.out.println(cardsDrawn);
         return cardsDrawn;
     }
     

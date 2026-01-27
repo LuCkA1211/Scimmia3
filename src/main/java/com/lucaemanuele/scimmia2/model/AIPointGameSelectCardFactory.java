@@ -33,6 +33,11 @@ public class AIPointGameSelectCardFactory implements IAISelectCardStrategyFactor
     /*
     Based on the difficult, it will return the ConcreteStrategy for AI Point modality
     */
+    
+    /*
+    One important thing: in the point 3 of the section 'Implementation' of the Abstract Factory Pattern in the GOF's book,
+    this is described as an extensible factory, i.e, a more flexible but less safe design for the factory. It is accepted.
+    */
     @Override
     public IAISelectCardStrategy createStrategy(String difficulty) {
         switch (difficulty) {

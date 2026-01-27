@@ -25,9 +25,9 @@ public class StandardGame extends Game {
             this.isEnded = true;
             int minNumberCards = 100;
             for(Player p : this.players) {
-                if(p.getCardsInHand().size() < minNumberCards) {  // Per il momento no pareggio
+                if(p.numberCardsInHand() < minNumberCards) {  // Per il momento no pareggio
                     this.winner = p;
-                    minNumberCards = p.getCardsInHand().size();
+                    minNumberCards = p.numberCardsInHand();
                 }
             }
         }

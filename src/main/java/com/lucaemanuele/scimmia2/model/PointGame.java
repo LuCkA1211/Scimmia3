@@ -29,7 +29,7 @@ public class PointGame extends Game {
     public void updatePoints() {
         if (this.currentPlayer.hasPlayed()) {
             Card playedCard = this.table.getFaceUpCard();
-            this.playerPoints.merge(currentPlayer, playedCard.getValue(), Integer::sum);
+            this.updatePlayerPoints(this.currentPlayer, playedCard.getValue());
         }
     }
     
@@ -43,7 +43,7 @@ public class PointGame extends Game {
         if(this.playerPoints.get(this.currentPlayer) >= this.pointsToWin) {
             this.winner = this.currentPlayer;
             this.isEnded = true;
-        } else if((this.currentPlayer.getHand().getCardsInHand().isEmpty()) || (this.table.getDeck().getCardsInDeck().isEmpty())) {
+        } else if((this.currentPlayer.noCardsInHand()) || (this.table.emptyDeck())) {
             this.isEnded = true;
             int[] maxPoints = {-1};  // Otherwise there would be error, since the local variables can't be updated inside lambda
             this.playerPoints.forEach((p, points) -> {
@@ -53,6 +53,14 @@ public class PointGame extends Game {
                 };
         });
         }
+    }
+    
+    public void updatePlayerPoints(Player player, int pointsToRemove) {
+        this.playerPoints.merge(this.getCurrentPlayer(), -pointsToRemove, Integer::sum);
+    }
+    
+    public int getSpecificPlayerPoints(Player player) {
+        return this.playerPoints.get(player);
     }
     
 }

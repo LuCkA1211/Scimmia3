@@ -11,7 +11,7 @@ This Strategy select a card based on the the cards in the hand, and it is based 
 If AIPlayer has a special card, plays it, otherwise it plays a card with a precise strategy.
 In the latter case, it computes how many cards of the same color and how many of the same value it has;
 then, it sees if it has more cards with the same color or the same value of the faceUpCard;
-then, it plays a random card with the same color, if it has more cards with the same color, or with the same value otherwise.
+then, it plays a random card with the same color if it has more cards with the same color, or with the same value otherwise.
 
 This class represent the ConcreteStrategy of Startegy Design Pattern
 */
@@ -38,7 +38,7 @@ public class AIHardStandardGameStrategy implements IAISelectCardStrategy {
             }
         }
         
-        Card lastFaceUpCard = aiPlayer.getHand().getLastFaceUpCard();
+        Card lastFaceUpCard = aiPlayer.getLastFaceUpCard();
         ArrayList<Card> cardsInHand = aiPlayer.getCardsInHand();
         
         /*
@@ -54,25 +54,9 @@ public class AIHardStandardGameStrategy implements IAISelectCardStrategy {
         ArrayList<Card> playableCardsForColor = new ArrayList<>();
         ArrayList<Card> playableCardsForValue = new ArrayList<>();
         
-        /*
-        "Split" the playableCards
-        */
-        for(Card c : playableCards) {
-            if(c.getColor().equals(lastFaceUpCard.getColor())) {
-                playableCardsForColor.add(c);
-            }
-            if(c.getValue() == lastFaceUpCard.getValue()) {
-                playableCardsForValue.add(c);
-            }
-        }
+        this.splitPlayableCards(playableCards, playableCardsForColor, playableCardsForValue, lastFaceUpCard);
         
-        /*
-        Compute the occurencies
-        */
-        for(Card c: cardsInHand) {
-            colorCardsInHandHashMap.merge(c.getColor(), 1, Integer::sum);
-            valueCardsInHandHashMap.merge(c.getValue(), 1, Integer::sum);
-        }
+        this.computeOccurencies(colorCardsInHandHashMap, valueCardsInHandHashMap, cardsInHand);
         
         /*
         Take the choice
@@ -117,5 +101,33 @@ public class AIHardStandardGameStrategy implements IAISelectCardStrategy {
         }
         
         return playableCards.indexOf(cardToPlay);
+    }
+    
+    /*
+    Helper functions, make the code reusable and maintenable
+    */
+    
+    /*
+    "Split" the playableCards
+    */
+    public void splitPlayableCards(ArrayList<Card> playableCards, ArrayList<Card> playableCardsForColor, ArrayList<Card> playableCardsForValue, Card lastFaceUpCard) {
+        for(Card c : playableCards) {
+            if(c.getColor().equals(lastFaceUpCard.getColor())) {
+                playableCardsForColor.add(c);
+            }
+            if(c.getValue() == lastFaceUpCard.getValue()) {
+                playableCardsForValue.add(c);
+            }
+        }
+    }
+    
+    /*
+    Compute the occurencies
+    */
+    public void computeOccurencies(HashMap<String, Integer> colorCardsInHandHashMap, HashMap<Integer, Integer> valueCardsInHandHashMap, ArrayList<Card> cardsInHand) {
+        for(Card c: cardsInHand) {
+            colorCardsInHandHashMap.merge(c.getColor(), 1, Integer::sum);
+            valueCardsInHandHashMap.merge(c.getValue(), 1, Integer::sum);
+        }
     }
 }

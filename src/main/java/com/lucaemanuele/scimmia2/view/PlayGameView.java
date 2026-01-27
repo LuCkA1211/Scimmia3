@@ -186,11 +186,9 @@ public abstract class PlayGameView {
                     do {
                         indexCard = this.getPlayableCard();
                         if(this.verifyInputPlayableCard(playableCards.size(), indexCard)) {
-                            System.out.println("Numero corretto");
                             break;
                         } else {
                             this.printErrorIndexPlayableCard();
-                            System.out.println("Numero sbagliato");
                         }
                     } while (!this.verifyInputPlayableCard(playableCards.size(), indexCard));  // while(1) also could be ok, but this is better
                 }

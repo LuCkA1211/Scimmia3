@@ -17,7 +17,7 @@ public class AIHardPointGameStrategy implements IAISelectCardStrategy {
     */
     @Override
     public int selectCardToPlay(AIPlayer aiPlayer) {
-        ArrayList<Card> playableCards = aiPlayer.getHand().getPlayableCards();
+        ArrayList<Card> playableCards = aiPlayer.getPlayableCardsFromHand();
         int maxCardIndex = 0;
         int max = -1;
         for(int i = 0; i < playableCards.size(); i++) {

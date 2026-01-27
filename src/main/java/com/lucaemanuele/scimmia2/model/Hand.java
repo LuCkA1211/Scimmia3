@@ -77,6 +77,7 @@ public class Hand {
     Verify if a specific card is playable. The Hand is the information expert
     */
     public boolean isPlayable(Card card) {
+        if(card == null) return false;
         String faceUpCardColor = this.lastFaceUpCard.getColor();
         int faceUpCardValue = this.lastFaceUpCard.getValue();
         if(this.lastFaceUpCard.color.equals("Black")) return true;

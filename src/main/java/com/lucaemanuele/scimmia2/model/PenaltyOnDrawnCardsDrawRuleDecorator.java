@@ -26,12 +26,12 @@ public class PenaltyOnDrawnCardsDrawRuleDecorator extends DrawRuleDecorator {
     }
     
     public void addedBehaviour(ArrayList<Card> drawnCards) {
-        int currentPlayerPoints = ((PointGame) this.game).getPlayerPoints().get(((PointGame) this.game).getCurrentPlayer());
+        int currentPlayerPoints = ((PointGame) this.game).getSpecificPlayerPoints(this.game.getCurrentPlayer());
         int pointsToRemove = drawnCards.size() * this.penaltyWeight;
         if(pointsToRemove > currentPlayerPoints) {
             pointsToRemove = currentPlayerPoints;
         }
-        ((PointGame)this.game).getPlayerPoints().merge(game.getCurrentPlayer(), -pointsToRemove, Integer::sum);
+        ((PointGame)this.game).updatePlayerPoints(this.game.getCurrentPlayer(), pointsToRemove);
     }
     
 }

@@ -24,4 +24,12 @@ public class HumanPlayer extends Player {
     public void clearHand() {
         this.hand = new Hand();
     }
+    
+    /*
+    Re-assign the variables used to maintain the state of the turn
+    */
+    public void clearTurnState() {
+        this.hasPlayed = false;
+        this.hasTakenTurn = false;
+    }
 }
