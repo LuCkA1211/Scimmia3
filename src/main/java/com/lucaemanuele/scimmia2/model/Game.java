@@ -171,7 +171,6 @@ public abstract class Game {
         if(this.getCurrentPlayer().hasPlayed()) {
             this.activateEffect();
         }
-        System.out.println(cardsDrawn);
         return cardsDrawn;
     }
     
