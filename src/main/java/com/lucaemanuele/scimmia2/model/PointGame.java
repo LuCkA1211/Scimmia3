@@ -56,7 +56,7 @@ public class PointGame extends Game {
     }
     
     public void updatePlayerPoints(Player player, int pointsToRemove) {
-        this.playerPoints.merge(this.getCurrentPlayer(), -pointsToRemove, Integer::sum);
+        this.playerPoints.merge(this.getCurrentPlayer(), pointsToRemove, Integer::sum);
     }
     
     public int getSpecificPlayerPoints(Player player) {

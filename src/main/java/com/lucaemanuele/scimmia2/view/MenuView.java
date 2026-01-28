@@ -10,7 +10,7 @@ public class MenuView {
         
     }
     public void printMenu(HumanPlayer p) {
-        System.out.println("Bentornato " + p.getNickname() + "!");
+        System.out.println("Bentornato " + p.getNickname() + "!");  // Assuming that we have already log in
         System.out.println("Cosa vuoi fare oggi?");
         System.out.println("1) Standard Game");
         System.out.println("2) Point Game");

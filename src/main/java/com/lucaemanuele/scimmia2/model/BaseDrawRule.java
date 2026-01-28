@@ -22,7 +22,7 @@ public class BaseDrawRule implements IDrawRule {
     @Override
     public ArrayList<Card> draw() {
         ArrayList<Card> cardsDrawn = new ArrayList<>();
-        Card cardDrawn = this.game.getCurrentPlayer().drawCard(this.game.getTable());
+        Card cardDrawn = this.game.drawCardChosenPlayer(this.game.getCurrentPlayer());
         cardsDrawn.add(cardDrawn);
         return cardsDrawn;
     }

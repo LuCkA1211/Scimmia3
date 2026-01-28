@@ -1,7 +1,5 @@
 package com.lucaemanuele.scimmia2.model;
 
-import java.util.ArrayList;
-
 /*
 Class which implements the Player governed by the system
 

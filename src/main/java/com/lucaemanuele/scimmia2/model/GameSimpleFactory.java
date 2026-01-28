@@ -26,8 +26,7 @@ public class GameSimpleFactory {
     /*
     Create a specific Game, with the specific modality and draw rule
     */
-    public Game createGame(HumanPlayer player, String difficulty, int numberCardsToDraw, String penalty, String modality) {
-        DeckDescription deckDesc = new DeckDescription(5,5,5,5);
+    public Game createGame(HumanPlayer player, String difficulty, int numberCardsToDraw, String penalty, String modality, DeckDescription deckDesc) {
         if(modality.equals("Standard")) {
             StandardGame game = new StandardGame(player, deckDesc, difficulty, numberCardsToDraw, penalty);
             return game;

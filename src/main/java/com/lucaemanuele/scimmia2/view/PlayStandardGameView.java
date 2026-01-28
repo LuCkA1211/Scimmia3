@@ -1,10 +1,9 @@
 package com.lucaemanuele.scimmia2.view;
 
-import com.lucaemanuele.scimmia2.model.BaseDrawRule;
+import com.lucaemanuele.scimmia2.model.DeckDescription;
 import com.lucaemanuele.scimmia2.model.GameSimpleFactory;
 import com.lucaemanuele.scimmia2.model.HumanPlayer;
 import com.lucaemanuele.scimmia2.model.StandardGame;
-import com.lucaemanuele.scimmia2.model.UnlimitedDrawRuleDecorator;
 
 public class PlayStandardGameView extends PlayGameView {
     private static PlayStandardGameView instance = null;
@@ -26,11 +25,12 @@ public class PlayStandardGameView extends PlayGameView {
     @Override
     public void startGame(HumanPlayer player) {
         GameSimpleFactory gsf = GameSimpleFactory.getInstance();
+        DeckDescription deckDesc = new DeckDescription(5,5,5,5);  // Assuming that the player chooses the deck
         this.printDifficulty();
         String difficulty = this.getDifficulty();
         this.printNumberCardsToDraw();
         int numberCardsToDraw = this.getNumberCardsToDraw();
-        StandardGame sg = (StandardGame) gsf.createGame(player, difficulty, numberCardsToDraw, "N", "Standard");
+        StandardGame sg = (StandardGame) gsf.createGame(player, difficulty, numberCardsToDraw, "N", "Standard", deckDesc);
         this.setGame(sg);
         this.play();
     }

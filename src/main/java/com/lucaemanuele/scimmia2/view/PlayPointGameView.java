@@ -1,5 +1,6 @@
 package com.lucaemanuele.scimmia2.view;
 
+import com.lucaemanuele.scimmia2.model.DeckDescription;
 import com.lucaemanuele.scimmia2.model.GameSimpleFactory;
 import com.lucaemanuele.scimmia2.model.HumanPlayer;
 import com.lucaemanuele.scimmia2.model.PointGame;
@@ -26,13 +27,14 @@ public class PlayPointGameView extends PlayGameView {
     @Override
     public void startGame(HumanPlayer player) {
         GameSimpleFactory gsf = GameSimpleFactory.getInstance();
+        DeckDescription deckDesc = new DeckDescription(5,5,5,5);  // Assuming that the player chooses the deck
         this.printDifficulty();
         String difficulty = this.getDifficulty();
         this.printNumberCardsToDraw();
         int numberCardsToDraw = this.getNumberCardsToDraw();
         this.printPenalty();
         String penalty = this.getPenalty();
-        PointGame pg = (PointGame) gsf.createGame(player, difficulty, numberCardsToDraw, penalty, "Point");
+        PointGame pg = (PointGame) gsf.createGame(player, difficulty, numberCardsToDraw, penalty, "Point", deckDesc);
         this.setGame(pg);
         this.play();
     }

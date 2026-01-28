@@ -225,4 +225,11 @@ public abstract class Game {
     public int getNumberOfCardsInDeck() {
         return this.table.getNumberOfCardsInDeck();
     }
+    
+    /*
+    The player must draw a card
+    */
+    public Card drawCardChosenPlayer(Player p) {
+        return p.drawCard(this.table);
+    }
 }

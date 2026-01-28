@@ -20,7 +20,7 @@ public class AIHardStandardGameStrategy implements IAISelectCardStrategy {
     Random rand = new Random();
     @Override
     public int selectCardToPlay(AIPlayer aiPlayer) {
-        ArrayList<Card> playableCards = aiPlayer.getHand().getPlayableCards();
+        ArrayList<Card> playableCards = aiPlayer.getPlayableCardsFromHand();
         
         /*
         Avoid computations

@@ -31,7 +31,7 @@ public class PenaltyOnDrawnCardsDrawRuleDecorator extends DrawRuleDecorator {
         if(pointsToRemove > currentPlayerPoints) {
             pointsToRemove = currentPlayerPoints;
         }
-        ((PointGame)this.game).updatePlayerPoints(this.game.getCurrentPlayer(), pointsToRemove);
+        ((PointGame)this.game).updatePlayerPoints(this.game.getCurrentPlayer(), -pointsToRemove);
     }
     
 }
